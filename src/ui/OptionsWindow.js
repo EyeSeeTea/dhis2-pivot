@@ -13,6 +13,7 @@ OptionsWindow = function(c) {
 
         showColTotals,
         showRowTotals,
+        showRowCumulativeTotals,
         showColSubTotals,
         showRowSubTotals,
         showDimensionLabels,
@@ -56,6 +57,12 @@ OptionsWindow = function(c) {
         boxLabel: i18n.show_row_totals,
         style: 'margin-bottom:' + checkboxBottomMargin + 'px',
         checked: true
+    });
+
+    showRowCumulativeTotals = Ext.create('Ext.form.field.Checkbox', {
+        boxLabel: i18n.show_row_cumulative_totals,
+        style: 'margin-bottom:' + checkboxBottomMargin + 'px',
+        checked: false
     });
 
     showColSubTotals = Ext.create('Ext.form.field.Checkbox', {
@@ -291,6 +298,7 @@ OptionsWindow = function(c) {
         items: [
             showColTotals,
             showRowTotals,
+            showRowCumulativeTotals,
             showColSubTotals,
             showRowSubTotals,
             showDimensionLabels,
@@ -357,6 +365,7 @@ OptionsWindow = function(c) {
         getOptions: function() {
             return {
                 showRowTotals: showRowTotals.getValue(),
+                showRowCumulativeTotals: showRowCumulativeTotals.getValue(),
                 showColTotals: showColTotals.getValue(),
                 showColSubTotals: showColSubTotals.getValue(),
                 showRowSubTotals: showRowSubTotals.getValue(),
@@ -384,6 +393,7 @@ OptionsWindow = function(c) {
             layout = layout || {};
 
             showRowTotals.setValue(isBoolean(layout.showRowTotals) ? layout.showRowTotals : true);
+            showRowCumulativeTotals.setValue(isBoolean(layout.showRowCumulativeTotals) ? layout.showRowCumulativeTotals : false);
             showColTotals.setValue(isBoolean(layout.showColTotals) ? layout.showColTotals : true);
             showColSubTotals.setValue(isBoolean(layout.showColSubTotals) ? layout.showColSubTotals : true);
             showRowSubTotals.setValue(isBoolean(layout.showRowSubTotals) ? layout.showRowSubTotals : true);
@@ -507,6 +517,7 @@ OptionsWindow = function(c) {
                 // cmp
                 w.showColTotals = showColTotals;
                 w.showRowTotals = showRowTotals;
+                w.showRowCumulativeTotals = showRowCumulativeTotals;
                 w.showColSubTotals = showColSubTotals
                 w.showRowSubTotals = showRowSubTotals;
                 w.showDimensionLabels = showDimensionLabels;
