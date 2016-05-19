@@ -13,6 +13,7 @@ OptionsWindow = function(c) {
 
         showColTotals,
         showRowTotals,
+        showColCumulativeTotals,
         showRowCumulativeTotals,
         showColSubTotals,
         showRowSubTotals,
@@ -57,6 +58,12 @@ OptionsWindow = function(c) {
         boxLabel: i18n.show_row_totals,
         style: 'margin-bottom:' + checkboxBottomMargin + 'px',
         checked: true
+    });
+
+    showColCumulativeTotals = Ext.create('Ext.form.field.Checkbox', {
+        boxLabel: i18n.show_column_cumulative_totals,
+        style: 'margin-bottom:' + checkboxBottomMargin + 'px',
+        checked: false
     });
 
     showRowCumulativeTotals = Ext.create('Ext.form.field.Checkbox', {
@@ -298,6 +305,7 @@ OptionsWindow = function(c) {
         items: [
             showColTotals,
             showRowTotals,
+            showColCumulativeTotals,
             showRowCumulativeTotals,
             showColSubTotals,
             showRowSubTotals,
@@ -365,6 +373,7 @@ OptionsWindow = function(c) {
         getOptions: function() {
             return {
                 showRowTotals: showRowTotals.getValue(),
+                showColCumulativeTotals: showColCumulativeTotals.getValue(),
                 showRowCumulativeTotals: showRowCumulativeTotals.getValue(),
                 showColTotals: showColTotals.getValue(),
                 showColSubTotals: showColSubTotals.getValue(),
@@ -393,6 +402,7 @@ OptionsWindow = function(c) {
             layout = layout || {};
 
             showRowTotals.setValue(isBoolean(layout.showRowTotals) ? layout.showRowTotals : true);
+            showColCumulativeTotals.setValue(isBoolean(layout.showColCumulativeTotals) ? layout.showColCumulativeTotals : false);
             showRowCumulativeTotals.setValue(isBoolean(layout.showRowCumulativeTotals) ? layout.showRowCumulativeTotals : false);
             showColTotals.setValue(isBoolean(layout.showColTotals) ? layout.showColTotals : true);
             showColSubTotals.setValue(isBoolean(layout.showColSubTotals) ? layout.showColSubTotals : true);
@@ -517,6 +527,7 @@ OptionsWindow = function(c) {
                 // cmp
                 w.showColTotals = showColTotals;
                 w.showRowTotals = showRowTotals;
+                w.showColCumulativeTotals = showColCumulativeTotals;
                 w.showRowCumulativeTotals = showRowCumulativeTotals;
                 w.showColSubTotals = showColSubTotals
                 w.showRowSubTotals = showRowSubTotals;
